@@ -1,0 +1,50 @@
+package mattresssalesreport;
+
+public class Product implements IProduct {
+    // Single-dimensional array for product names
+    private String[] products;
+    // Two-dimensional array for monthly sales[cite: 1, 11]
+    private int[][] sales;
+
+    public Product(String[] products, int[][] sales) {
+        this.products = products;
+        this.sales = sales;
+    }
+
+    @Override
+    public int GetTotalProductsSold() {
+        int total = 0;
+        for (int i = 0; i < sales.length; i++) {
+            for (int j = 0; j < sales[i].length; j++) {
+                total = total + sales[i][j];
+            }
+        }
+        return total;
+    }
+
+    @Override
+    public double GetAverageProductSold() {
+        int total = GetTotalProductsSold();
+        int count = 0;
+        for (int i = 0; i < sales.length; i++) {
+            count = count + sales[i].length;
+        }
+        return (double) total / count;
+    }
+
+    @Override
+    public String GetMostPopularProduct() {
+        int highestSale = sales[0][0];
+        int productIndex = 0;
+
+        for (int i = 0; i < sales.length; i++) {
+            for (int j = 0; j < sales[i].length; j++) {
+                if (sales[i][j] > highestSale) {
+                    highestSale = sales[i][j];
+                    productIndex = i;
+                }
+            }
+        }
+        return products[productIndex] + " (" + highestSale + ")";
+    }
+}

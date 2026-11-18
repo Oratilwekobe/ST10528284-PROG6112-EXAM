@@ -1,0 +1,21 @@
+package mattresssalesreport;
+
+public class PrintProduct {
+    private Product product;
+
+    public PrintProduct(Product product) {
+        this.product = product;
+    }
+
+    public void printTotalSales() {
+        System.out.println("TOTAL PRODUCT SALES: " + product.GetTotalProductsSold());
+    }
+
+    public void printAverageSales() {
+        System.out.println("AVERAGE PRODUCT SALES: " + (int) product.GetAverageProductSold());
+    }
+
+    public void printMostPopularProduct() {
+        System.out.println("MOST POPULAR PRODUCT: " + product.GetMostPopularProduct());
+    }
+}
